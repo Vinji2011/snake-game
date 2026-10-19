@@ -1,0 +1,287 @@
+:root {
+  color-scheme: light;
+  --ink: #18372d;
+  --muted: #819188;
+  --paper: #f5f4ec;
+  --accent: #caef67;
+  --board: #173e32;
+  --line: #dfe3d7;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  width: 372px;
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Trebuchet MS', sans-serif;
+}
+
+button {
+  color: inherit;
+  font: inherit;
+}
+
+.game-shell {
+  padding: 20px 24px 19px;
+}
+
+.topbar,
+.brand,
+.score-strip,
+.game-footer,
+.game-actions {
+  display: flex;
+  align-items: center;
+}
+
+.topbar,
+.score-strip,
+.game-footer {
+  justify-content: space-between;
+}
+
+.brand {
+  gap: 12px;
+}
+
+.brand-mark {
+  display: grid;
+  width: 36px;
+  height: 36px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3px;
+  padding: 4px;
+  border-radius: 9px;
+  background: var(--ink);
+  transform: rotate(-5deg);
+}
+
+.brand-mark i {
+  border-radius: 2px;
+  background: var(--accent);
+}
+
+.brand-mark i:nth-child(2),
+.brand-mark i:nth-child(3) {
+  opacity: .52;
+}
+
+.eyebrow,
+.score-label,
+.live-indicator,
+.overlay-kicker {
+  font-family: 'DM Mono', Consolas, monospace;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+.eyebrow {
+  margin: 0 0 1px;
+  color: var(--muted);
+}
+
+h1 {
+  margin: 0;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 24px;
+  line-height: 1;
+  font-weight: 700;
+}
+
+h1 span {
+  color: #f07858;
+}
+
+.live-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #557a63;
+}
+
+.live-indicator i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #8dc870;
+  box-shadow: 0 0 0 3px #e2ebd7;
+}
+
+.score-strip {
+  min-height: 61px;
+  margin: 14px 0 12px;
+  padding: 0 3px;
+}
+
+.score-block {
+  display: grid;
+  gap: 1px;
+  min-width: 50px;
+}
+
+.score-label {
+  color: var(--muted);
+}
+
+.score-block strong {
+  font-size: 23px;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.best-block strong {
+  color: #638849;
+}
+
+.score-divider {
+  width: 1px;
+  height: 29px;
+  margin: 0 12px 0 2px;
+  background: var(--line);
+}
+
+.game-status {
+  max-width: 132px;
+  margin: 0 0 0 auto;
+  color: #75867b;
+  font-size: 11px;
+  text-align: right;
+}
+
+.board-wrap {
+  position: relative;
+  width: 324px;
+  height: 324px;
+  overflow: hidden;
+  border: 2px solid #dce2d3;
+  border-radius: 5px;
+  background: var(--board);
+  box-shadow: 0 5px 0 #e3e3d9;
+}
+
+canvas {
+  display: block;
+  width: 320px;
+  height: 320px;
+  image-rendering: pixelated;
+}
+
+.game-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgb(18 49 39 / 84%);
+  color: #f5f4ec;
+  animation: reveal .16s ease-out;
+}
+
+.game-overlay[hidden] {
+  display: none;
+}
+
+.overlay-kicker {
+  margin-bottom: 8px;
+  color: var(--accent);
+}
+
+.game-overlay strong {
+  margin-bottom: 16px;
+  font-size: 21px;
+}
+
+.overlay-button {
+  min-height: 36px;
+  padding: 0 16px;
+  border: 0;
+  border-radius: 3px;
+  background: var(--accent);
+  color: var(--ink);
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.game-footer {
+  margin-top: 17px;
+}
+
+.d-pad {
+  display: grid;
+  grid-template-columns: repeat(3, 34px);
+  grid-template-rows: repeat(2, 30px);
+  gap: 3px;
+}
+
+.d-pad button,
+.action-button {
+  display: grid;
+  place-items: center;
+  border: 1px solid #dce2d3;
+  border-radius: 4px;
+  background: #fbfaf5;
+  cursor: pointer;
+  transition: background-color .12s ease, transform .12s ease;
+}
+
+.d-pad button {
+  font-size: 15px;
+  line-height: 1;
+}
+
+.d-pad button:hover,
+.action-button:hover {
+  background: #eaf1dd;
+}
+
+.d-pad button:active,
+.action-button:active {
+  transform: translateY(1px);
+}
+
+.game-actions {
+  gap: 7px;
+}
+
+.action-button {
+  width: 36px;
+  height: 36px;
+  font-size: 18px;
+}
+
+.restart-button {
+  border-color: var(--ink);
+  background: var(--ink);
+  color: var(--accent);
+  font-size: 22px;
+}
+
+.restart-button:hover {
+  background: #285342;
+}
+
+button:focus-visible {
+  outline: 2px solid #e47b5d;
+  outline-offset: 2px;
+}
+
+@keyframes reveal {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+  }
+}

@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Little Snake</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="game-shell">
+      <header class="topbar">
+        <div class="brand">
+          <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+          <div>
+            <p class="eyebrow">A LITTLE ARCADE BREAK</p>
+            <h1>Snake<span>.</span></h1>
+          </div>
+        </div>
+        <span class="live-indicator"><i></i> LIVE</span>
+      </header>
+
+      <section class="score-strip" aria-label="Scores">
+        <div class="score-block">
+          <span class="score-label">SCORE</span>
+          <strong id="score">00</strong>
+        </div>
+        <span class="score-divider" aria-hidden="true"></span>
+        <div class="score-block best-block">
+          <span class="score-label">BEST</span>
+          <strong id="best">00</strong>
+        </div>
+        <p id="game-status" class="game-status" aria-live="polite">Make it count.</p>
+      </section>
+
+      <div class="board-wrap">
+        <canvas id="board" width="400" height="400" aria-label="Snake game board"></canvas>
+        <div id="game-overlay" class="game-overlay" hidden>
+          <span id="overlay-kicker" class="overlay-kicker">PAUSED</span>
+          <strong id="overlay-title">Take a breath.</strong>
+          <button id="overlay-button" class="overlay-button" type="button">Resume</button>
+        </div>
+      </div>
+
+      <footer class="game-footer">
+        <div class="d-pad" aria-label="Direction controls">
+          <span aria-hidden="true"></span>
+          <button type="button" data-direction="up" aria-label="Move up">↑</button>
+          <span aria-hidden="true"></span>
+          <button type="button" data-direction="left" aria-label="Move left">←</button>
+          <button type="button" data-direction="down" aria-label="Move down">↓</button>
+          <button type="button" data-direction="right" aria-label="Move right">→</button>
+        </div>
+        <div class="game-actions">
+          <button id="pause-button" class="action-button" type="button" aria-label="Pause game" title="Pause game">Ⅱ</button>
+          <button id="restart-button" class="action-button restart-button" type="button" aria-label="Start a new game" title="Start a new game">↻</button>
+        </div>
+      </footer>
+    </main>
+    <script src="game.js"></script>
+  </body>
+</html>
