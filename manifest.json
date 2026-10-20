@@ -1,11 +1,11 @@
 {
   "manifest_version": 3,
-  "name": "Little Snake",
+  "name": "Little Arcade",
   "version": "1.0.0",
-  "description": "A tiny snake game for your browser toolbar.",
+  "description": "A tiny collection of arcade games for your browser toolbar.",
   "permissions": ["storage"],
   "action": {
-    "default_title": "Little Snake",
+    "default_title": "Little Arcade",
     "default_popup": "popup.html"
   }
 }

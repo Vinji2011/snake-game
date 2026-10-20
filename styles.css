@@ -93,8 +93,92 @@ h1 {
   font-weight: 700;
 }
 
+h1#game-heading {
+  font-size: 21px;
+}
+
 h1 span {
   color: #f07858;
+}
+
+.main-menu {
+  padding-top: 21px;
+}
+
+.menu-intro {
+  margin: 0 0 12px;
+  color: #75867b;
+  font-size: 12px;
+}
+
+.game-picker {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 9px;
+}
+
+.game-card {
+  display: flex;
+  min-height: 113px;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 12px;
+  border: 1px solid #dce2d3;
+  border-radius: 5px;
+  background: #fbfaf5;
+  text-align: left;
+  cursor: pointer;
+  transition: transform .12s ease, border-color .12s ease, background-color .12s ease;
+}
+
+.game-card:hover {
+  transform: translateY(-2px);
+  border-color: #aabe8a;
+  background: #fff;
+}
+
+.game-icon {
+  display: grid;
+  width: 29px;
+  height: 29px;
+  place-items: center;
+  margin-bottom: 6px;
+  border-radius: 7px;
+  background: #eaf1dd;
+  color: #527f4e;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.pacman-card .game-icon {
+  background: #fff2bf;
+  color: #d49c00;
+}
+
+.pong-card .game-icon {
+  background: #fbe4dc;
+  color: #d96e52;
+}
+
+.runner-card .game-icon {
+  background: #e2eff3;
+  color: #557e8d;
+}
+
+.game-card strong {
+  margin-bottom: 3px;
+  font-size: 13px;
+}
+
+.game-card small {
+  color: var(--muted);
+  font-size: 10px;
+}
+
+#game-screen[hidden],
+.main-menu[hidden] {
+  display: none;
 }
 
 .live-indicator {
@@ -261,6 +345,11 @@ canvas {
   background: var(--ink);
   color: var(--accent);
   font-size: 22px;
+}
+
+.menu-button {
+  color: #527f4e;
+  font-size: 21px;
 }
 
 .restart-button:hover {

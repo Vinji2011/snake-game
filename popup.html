@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Little Snake</title>
+    <title>Little Arcade</title>
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
@@ -13,12 +13,39 @@
           <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
           <div>
             <p class="eyebrow">A LITTLE ARCADE BREAK</p>
-            <h1>Snake<span>.</span></h1>
+            <h1 id="game-heading">Little Arcade<span>.</span></h1>
           </div>
         </div>
         <span class="live-indicator"><i></i> LIVE</span>
       </header>
 
+      <section id="main-menu" class="main-menu" aria-label="Choose a game">
+        <p class="menu-intro">Pick a game. Take a tiny break.</p>
+        <div class="game-picker">
+          <button class="game-card snake-card" type="button" data-game="snake">
+            <span class="game-icon" aria-hidden="true">↝</span>
+            <strong>Snake</strong>
+            <small>Eat, grow, don't crash</small>
+          </button>
+          <button class="game-card pacman-card" type="button" data-game="pacman">
+            <span class="game-icon" aria-hidden="true">◕</span>
+            <strong>Pac-Man</strong>
+            <small>Clear the maze</small>
+          </button>
+          <button class="game-card pong-card" type="button" data-game="pong">
+            <span class="game-icon" aria-hidden="true">▥</span>
+            <strong>Ping Pong</strong>
+            <small>Keep the ball in play</small>
+          </button>
+          <button class="game-card runner-card" type="button" data-game="runner">
+            <span class="game-icon" aria-hidden="true">▲</span>
+            <strong>Run &amp; Jump</strong>
+            <small>Dodge the obstacles</small>
+          </button>
+        </div>
+      </section>
+
+      <section id="game-screen" hidden>
       <section class="score-strip" aria-label="Scores">
         <div class="score-block">
           <span class="score-label">SCORE</span>
@@ -42,7 +69,7 @@
       </div>
 
       <footer class="game-footer">
-        <div class="d-pad" aria-label="Direction controls">
+        <div class="d-pad" aria-label="Game controls">
           <span aria-hidden="true"></span>
           <button type="button" data-direction="up" aria-label="Move up">↑</button>
           <span aria-hidden="true"></span>
@@ -51,10 +78,12 @@
           <button type="button" data-direction="right" aria-label="Move right">→</button>
         </div>
         <div class="game-actions">
+          <button id="menu-button" class="action-button menu-button" type="button" aria-label="Return to game menu" title="Game menu">⌂</button>
           <button id="pause-button" class="action-button" type="button" aria-label="Pause game" title="Pause game">Ⅱ</button>
           <button id="restart-button" class="action-button restart-button" type="button" aria-label="Start a new game" title="Start a new game">↻</button>
         </div>
       </footer>
+      </section>
     </main>
     <script src="game.js"></script>
   </body>
