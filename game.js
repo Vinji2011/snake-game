@@ -28,6 +28,7 @@ const gameNames = {
 };
 const mazeSize = 16;
 const pongTickMs = 24;
+const pongMinVerticalSpeed = 1.5;
 const runnerTickMs = 24;
 
 let mode = 'snake';
@@ -278,7 +279,7 @@ function resetPacman() {
   ghosts = [
     { x: 14, y: 1, color: '#f27b5d' },
     { x: 14, y: 14, color: '#71c6e8' },
-    { x: 1, y: 14, color: '#d68ce5' }
+    { x: 1, y: 14, color: '#d0ff00' }
   ];
   pellets = [];
   for (let y = 1; y < mazeSize - 1; y += 1) {
@@ -338,25 +339,33 @@ function resetPong() {
   ball = { x: 160, y: 160, vx: -4.2, vy: 3, radius: 6 };
 }
 
+function keepPongBallFromGoingStraight() {
+  if (Math.abs(ball.vy) < pongMinVerticalSpeed) {
+    const direction = ball.vy === 0 ? (Math.random() < 0.5 ? -1 : 1) : Math.sign(ball.vy);
+    ball.vy = direction * pongMinVerticalSpeed;
+  }
+}
+
 function stepPong() {
   paddle.y += paddle.direction * 7;
   paddle.y = Math.max(0, Math.min(canvas.height - paddle.height, paddle.y));
-  const aiY = ball.y - paddle.height / 2;
-  const rightPaddleY = Math.max(0, Math.min(canvas.height - paddle.height, aiY));
   ball.x += ball.vx;
   ball.y += ball.vy;
   if (ball.y < ball.radius || ball.y > canvas.height - ball.radius) ball.vy *= -1;
+  const rightPaddleY = Math.max(0, Math.min(canvas.height - paddle.height, ball.y - paddle.height / 2));
 
   if (ball.vx < 0 && ball.x - ball.radius <= 24 && ball.y >= paddle.y && ball.y <= paddle.y + paddle.height) {
     ball.x = 31;
     ball.vx = Math.abs(ball.vx) * 1.06;
     ball.vy += (ball.y - (paddle.y + paddle.height / 2)) * 0.055;
+    keepPongBallFromGoingStraight();
     setScore(score + 1);
   } else if (ball.vx > 0 && ball.x + ball.radius >= canvas.width - 24 &&
     ball.y >= rightPaddleY && ball.y <= rightPaddleY + paddle.height) {
     ball.x = canvas.width - 31;
     ball.vx = -Math.abs(ball.vx) * 1.04;
     ball.vy += (ball.y - (rightPaddleY + paddle.height / 2)) * 0.035;
+    keepPongBallFromGoingStraight();
   }
   if (ball.x < -ball.radius) {
     finishGame();
